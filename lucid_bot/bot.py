@@ -39,15 +39,6 @@ async def on_join_guild(event: hikari.GuildJoinEvent) -> None:
 	
 	# Create record in database
 	register_guild_in_db(guild_id, guild_name)
-
-
-
-
-@bot.command
-@lightbulb.command('test', "test guild stuff")
-@lightbulb.implements(lightbulb.SlashCommand)
-async def testCommand(ctx: lightbulb.Context) -> None:
-	result = ctx.get_guild().get_roles()
 	
 
 def run() -> None:
