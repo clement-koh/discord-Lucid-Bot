@@ -6,7 +6,7 @@ import miru
 
 plugin = lightbulb.Plugin("Easter Egg")
 
-prank_user_ids = [371198685759143936, 222344990167138305] 
+prank_user_ids = [222344990167138305] 
 
 lookout_messages = [
 		"buy",

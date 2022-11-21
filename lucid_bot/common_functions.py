@@ -43,6 +43,9 @@ def format_character_information(characters:list) -> str:
 	'''
 	Formats character information into a code block for discord
 	'''
+	if len(characters) == 0:
+		return "No characters found"
+
 	message = ""
 	count = 1
 	for character in characters:

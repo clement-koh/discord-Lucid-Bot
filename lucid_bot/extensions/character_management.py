@@ -5,6 +5,7 @@ import hikari
 
 from ..common_functions import create_new_character_record, get_character_records
 from .components._character_component import *
+from .components._embed_colors import *
 
 
 plugin = lightbulb.Plugin("Character Management")
@@ -64,12 +65,14 @@ async def view_characters(ctx: lightbulb.SlashContext):
 		characters = get_character_records(discord_id)
 	except Exception as e:
 		logging.error(e)
-		await ctx.respond("Bot Error: Failed to retrieve characters")
+		await ctx.respond(hikari.Embed(title="Bot Error: Failed to retrieve characters", color=COLOR_ERROR))
 		return
 
 	# Success
 	message = format_character_information(characters)
-	embed = hikari.Embed(title="Your Character Information", description=f"{message}")
+	if not characters:
+		message = "No characters found. Use `/character add` to register a character"
+	embed = hikari.Embed(title="Your Character Information", description=f"{message}", color=COLOR_SUCCESS)
 	await ctx.respond(embed)
 
 
