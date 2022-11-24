@@ -285,7 +285,7 @@ async def show_registered_bosses(ctx:lightbulb.SlashContext):
 	async def display_no_bossing_interest(ctx: lightbulb.SlashContext) -> None:
 		embed = hikari.Embed(
 			title="You have not registered for any bosses",
-			description="Use '/boss register' to to indicate your bossing interest for this week",
+			description="Use '/boss register' to indicate your bossing interest for this week",
 			color=COLOR_SUCCESS
 		)
 		await ctx.respond(embed)
