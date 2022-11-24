@@ -5,27 +5,29 @@ import hikari
 
 from ..common_functions import get_character_records, format_character_information
 from .components._character_component import *
+from .components._embed_colors import *
 
 
 plugin = lightbulb.Plugin("Character Management")
 
 @plugin.command()
-@lightbulb.add_checks(lightbulb.checks.has_guild_permissions(hikari.Permissions.MANAGE_ROLES))
-@lightbulb.command("View Character List", "View list of characters that the user added")
+@lightbulb.command("View Characters", "View list of characters that the user added")
 @lightbulb.implements(lightbulb.UserCommand)
 async def user_context_view_characters(ctx: lightbulb.UserContext) -> None:
 	member = ctx.app.cache.get_member(ctx.guild_id, ctx.options.target.id)
-	characters = get_character_records(str(member.id))
-	embed = hikari.Embed(
-		title = f"{member.display_name}'s characters",
-		description = format_character_information(characters)
-	)
-	await ctx.respond(embed=embed, flags=hikari.MessageFlag.EPHEMERAL)
+	author_discord_id = str(ctx.author.id)
+	guild_record = get_guild_record(str(ctx.guild_id))
 
-@user_context_view_characters.set_error_handler
-async def user_context_view_character_error_handler(event: lightbulb.UserCommandErrorEvent):
-	if isinstance(event.exception, lightbulb.errors.MissingRequiredPermission):
-		await event.context.respond("You do not have the required permission", flags=hikari.MessageFlag.EPHEMERAL)
+	# If user is self or user is authorized role 
+	if (str(member.id) == author_discord_id) or author_discord_id in guild_record.get('authorized_roles', []):
+		characters = get_character_records(str(member.id))
+		embed = hikari.Embed(
+			title = f"{member.display_name}'s characters",
+			description = format_character_information(characters)
+		)
+		await ctx.respond(embed=embed, flags=hikari.MessageFlag.EPHEMERAL)
+	else:
+		await ctx.respond(hikari.Embed(title=f"No stalking {member.display_name}'s characters", description="You can only view your characters", color=COLOR_ERROR))
 		return True
 
 # Function to load plugins

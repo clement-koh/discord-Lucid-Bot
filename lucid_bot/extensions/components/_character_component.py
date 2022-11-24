@@ -1,8 +1,11 @@
+import traceback
+
 import hikari
 import miru
 import logging
 
-from lucid_bot.common_functions import get_character_records, delete_character_record, format_character_information
+from lucid_bot.common_functions import get_character_records, delete_character_record, format_character_information, get_guild_record, update_guild_bossing_interest
+from lucid_bot.extensions.bossing_management import edit_guild_bossing_interest, get_valid_selection
 
 class Character_Select(miru.Select):
 	def __init__(self, characters) -> None:
@@ -39,6 +42,28 @@ class Delete_Button(miru.Button):
 		if hasattr(self.view, "selection"):
 			character = str(self.view.selection).strip()
 			discord_id = str(ctx.user.id).strip()
+
+			try:
+				character_records = get_character_records(discord_id)
+				selected_character = None
+				for character_record in character_records:
+					if character_record.get("character_name") == character:
+						selected_character = character
+						break;
+				involved_guilds = character_record.get("guilds_involved_in", [])
+
+				for guild_id in involved_guilds:
+					print(guild_id)
+					guild_record = get_guild_record(guild_id)
+					valid_selections = get_valid_selection("-all", guild_record.get("allowed_bosses"))
+					guild_bossing_interest = edit_guild_bossing_interest(discord_id, selected_character, guild_record.get('bossing_interest', {}), valid_selections)
+					update_guild_bossing_interest(guild_id, guild_bossing_interest)
+			except Exception as e:
+				logging.error(f"Error while deleting bossing character from guild: {e}, {traceback.print_exc()}")
+				await ctx.edit_response("Bot Error: Failed to delete character", components=[])
+				self.view.stop()
+				return
+
 			try:
 				# Delete CHaracters
 				delete_character_record(discord_id, character)
@@ -49,8 +74,10 @@ class Delete_Button(miru.Button):
 				message = format_character_information(characters)
 				await ctx.respond(f"<@{discord_id}> Existing Characters\n{message}")
 			except Exception as e:
-				logging.error(e)
+				logging.error(f"Failed to delete character: {e}")
 				await ctx.edit_response("Bot Error: Failed to delete character", components=[])
+				self.view.stop()
+				return
 			
 			# Stop view
 			self.view.stop()

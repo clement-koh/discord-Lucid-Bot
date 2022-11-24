@@ -54,7 +54,7 @@ async def send_p2w_prank_message(event: hikari.GuildMessageCreateEvent) -> None:
 
 
 def check_f2p(message):
-	if any((lookout_message in message.lower() and "i" in message.lower().split()) for lookout_message in lookout_messages):
+	if any((lookout_message in message.lower()) for lookout_message in lookout_messages):
 		return True
 	return False
 

@@ -3,7 +3,7 @@ import logging
 import lightbulb
 import hikari
 
-from ..common_functions import create_new_character_record, get_character_records
+from ..common_functions import create_new_character_record, get_character_records, get_guild_record
 from .components._character_component import *
 from .components._embed_colors import *
 
@@ -87,6 +87,7 @@ async def delete_character(ctx: lightbulb.SlashContext):
 	# Get User Information
 	characters = None
 	discord_id = str(ctx.author.id)
+
 	try:
 		characters = get_character_records(discord_id)
 	except Exception as e:

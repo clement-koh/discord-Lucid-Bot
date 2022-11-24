@@ -67,63 +67,6 @@ async def register_bossing_character_in_guild(ctx: lightbulb.SlashContext) -> No
 	Register a character for boss in the current guild
 	'''
 
-	def get_valid_selection(selection_list: str, allowed_bosses: list) -> list:
-		valid_selections = []
-		if allowed_bosses is None or len(allowed_bosses) == 0:
-			allowed_bosses = [boss["id"] for boss in BOSSES]
-		selection_list = selection_list.split(",")
-		for boss in selection_list:
-			# Convert Boss ID to int 
-			boss_id_selected = None
-			# Add all boss
-			if boss.strip().lower() == "all":
-				valid_selections += [int(x) for x in allowed_bosses]
-			# Remove all boss
-			elif boss.strip().lower() == "-all":
-				valid_selections += [-int(x) for x in allowed_bosses]
-			
-			# Add/remove specific numbers
-			else:
-				try:
-					boss_id_selected = int(boss.strip())
-					# Check if selection list is part of allowed_bosses
-					if boss_id_selected != 0 and abs(boss_id_selected) <= len(allowed_bosses):
-						# Added boss ID of selected boss
-						if boss_id_selected > 0:
-							valid_selections.append(str(allowed_bosses[boss_id_selected - 1]))
-						elif boss_id_selected < 0:
-							valid_selections.append("-"+str(allowed_bosses[abs(boss_id_selected) - 1]))
-				except:
-					continue
-		return list(set(valid_selections))
-
-
-	def edit_guild_bossing_interest(interest: dict, valid_selections: int) -> dict:
-		# Edit interest
-		for selection in valid_selections:
-			# Get selection
-			selection = int(selection)
-			str_abs_selection = str(abs(selection))
-
-			# Add / Remove Record
-			record = {"discord_id": discord_id, "character_name": selected_character_name}
-			if selection > 0:
-				if interest.get(str_abs_selection) is None:
-					interest[str_abs_selection] = []
-				
-				if record not in interest[str_abs_selection]:
-					interest[str_abs_selection].append(record)
-
-			# Remove from boss preference
-			elif selection < 0:
-				if interest.get(str_abs_selection) is not None:
-					try:
-						interest[str_abs_selection].remove(record)
-					except:
-						pass
-		return interest
-
-
 	def edit_character_bossing_interest(interest:list, guild_id: str) -> list:
 		if interest is None:
 			return [guild_id]
@@ -185,7 +128,7 @@ async def register_bossing_character_in_guild(ctx: lightbulb.SlashContext) -> No
 	# Edit Interest
 	valid_selections = get_valid_selection(bosses_selected, guild_record.get("allowed_bosses"))
 
-	guild_bossing_interest = edit_guild_bossing_interest(guild_bossing_interest, valid_selections)
+	guild_bossing_interest = edit_guild_bossing_interest(discord_id, selected_character_name, guild_bossing_interest, valid_selections)
 	character_bossing_interest = edit_character_bossing_interest(character_interest, guild_id)
 	
 	# Update Interest
@@ -213,6 +156,7 @@ async def show_registered_bosses(ctx: lightbulb.SlashContext) -> None:
 	logging.info("Show user's registered bosses triggered")
 	await(show_registered_bosses(ctx))
 	
+
 # Show all registrations in the guild
 @bossing_group.child
 @lightbulb.command('show_guild_summary', "Displays characters that have registered for guild bossing for the week")
@@ -242,7 +186,7 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 	bossing_interest = guild_info.get("bossing_interest")
 	
 	# If no one registered
-	if bossing_interest is None:
+	if bossing_interest:
 		await display_no_registration(ctx)
 		return
 
@@ -314,7 +258,7 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 
 		message = f"```\n{message}```"
 		# Add Embed Field
-		embed.add_field(data['boss']['name'], message)
+		embed.add_field(f"{data['boss']['difficulty']} {data['boss']['name']}", message)
 	
 	# Display Embed
 	await ctx.respond(embed)
@@ -435,6 +379,62 @@ async def display_boss_registration(ctx:lightbulb.SlashContext, title:str, color
 	embed.add_field("Your Characters", format_character_information(characters))
 
 	await ctx.respond(embed)
+
+def get_valid_selection(selection_list: str, allowed_bosses: list) -> list:
+	valid_selections = []
+	if allowed_bosses is None or len(allowed_bosses) == 0:
+		allowed_bosses = [boss["id"] for boss in BOSSES]
+	selection_list = selection_list.split(",")
+	for boss in selection_list:
+		# Convert Boss ID to int 
+		boss_id_selected = None
+		# Add all boss
+		if boss.strip().lower() == "all":
+			valid_selections += [int(x) for x in allowed_bosses]
+		# Remove all boss
+		elif boss.strip().lower() == "-all":
+			valid_selections += [-int(x) for x in allowed_bosses]
+		
+		# Add/remove specific numbers
+		else:
+			try:
+				boss_id_selected = int(boss.strip())
+				# Check if selection list is part of allowed_bosses
+				if boss_id_selected != 0 and abs(boss_id_selected) <= len(allowed_bosses):
+					# Added boss ID of selected boss
+					if boss_id_selected > 0:
+						valid_selections.append(str(allowed_bosses[boss_id_selected - 1]))
+					elif boss_id_selected < 0:
+						valid_selections.append("-"+str(allowed_bosses[abs(boss_id_selected) - 1]))
+			except:
+				continue
+	return list(set(valid_selections))
+
+
+def edit_guild_bossing_interest(discord_id: str, selected_character_name:str, interest: dict, valid_selections: int) -> dict:
+	# Edit interest
+	for selection in valid_selections:
+		# Get selection
+		selection = int(selection)
+		str_abs_selection = str(abs(selection))
+
+		# Add / Remove Record
+		record = {"discord_id": discord_id, "character_name": selected_character_name}
+		if selection > 0:
+			if interest.get(str_abs_selection) is None:
+				interest[str_abs_selection] = []
+			
+			if record not in interest[str_abs_selection]:
+				interest[str_abs_selection].append(record)
+
+		# Remove from boss preference
+		elif selection < 0:
+			if interest.get(str_abs_selection) is not None:
+				try:
+					interest[str_abs_selection].remove(record)
+				except:
+					pass
+	return interest
 
 
 # Function to load plugins
