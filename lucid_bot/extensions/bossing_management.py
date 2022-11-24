@@ -114,7 +114,6 @@ async def register_bossing_character_in_guild(ctx: lightbulb.SlashContext) -> No
 	# (Failed Case) If User has more than one character and did not provide a character number
 	if len(characters) >= 1 and character_number is None:
 		title = "You need to provide a character number"
-		color = COLOR_ERROR
 		await display_boss_registration(ctx, title, COLOR_ERROR ,discord_id, guild_id)
 		return
 	
