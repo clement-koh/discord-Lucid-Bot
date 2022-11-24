@@ -3,12 +3,16 @@ BOSSES = [
 	{
 		"id": 1,
 		"name": "Zakum, Hilla, Pink Bean, Cygnus",
-		"alt_name": ["czak", "hhilla", "cpb", "ncyg", "chaos zakum", "hard hilla", "chaos pink bean", "normal cygnus"],
+		"alt_name": ["czak", "hhilla", "cpb", "ncyg", "chaos zakum", "hard hilla", "chaos pink bean", "normal cygnus", "zakum", "hilla", "pink bean", "cygnus"],
 		"difficulty": "Hard",
 		"solo_floor": 36,
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/4/43/Mob_Zakum.png",
+		"tutorial": "Zakum → https://youtu.be/z5TyWoB7yQU?t=57\n" + \
+					"Pink Bean → https://www.youtube.com/watch?v=oHH1LASE5Jc\n" + \
+					"Cygnus → https://www.youtube.com/watch?v=suyFp_feHRI\n",
 		"priority": 100,
 	},
 	{
@@ -20,17 +24,24 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/d/d8/Mob_Magnus.png",
+		"tutorial": "https://youtu.be/z5TyWoB7yQU?t=733",
 		"priority": 300,
 	},
 	{
 		"id": 3,
 		"name": "Root Abyss",
-		"alt_name": ["cra", "queen", "clown", "kfc", "chicken", "vellum", "chaos root abyss"],
+		"alt_name": ["cra", "queen", "clown", "kfc", "chicken", "vellum", "chaos root abyss", "pierre", "von bon", "chaos queen", "chaos pierre", "chaos vonbon", "vonbon", "chaos von bon", "chaos vellum"],
 		"difficulty": "Chaos",
 		"solo_floor": 36,
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/d/da/Mob_Vellum.png",
+		"tutorial": "Von Bon → https://www.youtube.com/watch?v=uaqYR_1kE6U\n" + \
+					"Queen → https://youtu.be/z5TyWoB7yQU?t=345\n" + \
+					"Clown → https://www.youtube.com/watch?v=D3Gry0Nz3dM\n" + \
+					"Vellum → https://youtu.be/z5TyWoB7yQU?t=587\n",
 		"priority": 200,
 	},
 	{
@@ -42,17 +53,21 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/3/35/Mob_Papulatus_Clock.png",
+		"tutorial": "https://youtu.be/k3blj1RP6c8?t=20",
 		"priority": 400, 
 	}, 
 	{
 		"id": 5,
 		"name": "Princess Nou",
-		"alt_name": ["pnou"],
+		"alt_name": ["pnou", "pno", 'princess no', "princess nou"],
 		"difficulty": "Chaos",
 		"solo_floor": None,
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/b/b8/Mob_Princess_No.png",
+		"tutorial": "https://youtu.be/k3blj1RP6c8?t=394",
 		"priority": 500,
 	},
 	{
@@ -64,6 +79,8 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/e/ea/Mob_Akechi_Mitsuhide.png",
+		"tutorial": "https://youtu.be/ZwdEqIsx-fQ?t=39",
 		"priority": 600,
 	},
 	{
@@ -75,7 +92,9 @@ BOSSES = [
 		"party_floor_4_man": 40,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": 36,
-		"priority": 700,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/1/16/Mob_Lotus_%282%29.png",
+		"tutorial": "https://www.youtube.com/watch?v=SgJTAZkQ9Q8",
+		"priority": 800,
 	},
 	{
 		"id": 8,
@@ -86,7 +105,9 @@ BOSSES = [
 		"party_floor_4_man": 40,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": 37,
-		"priority": 800,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/0/0c/Mob_Damien_%282%29.png",
+		"tutorial": "https://www.youtube.com/watch?v=Vqid4DzRY7w",
+		"priority": 700,
 	},
 	{
 		"id": 9,
@@ -97,6 +118,8 @@ BOSSES = [
 		"party_floor_4_man": 44,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/0/0f/Mob_Guardian_Angel_Slime.png",
+		"tutorial": "https://youtu.be/ZwdEqIsx-fQ?t=154",
 		"priority": 900,
 	},
 	{
@@ -108,6 +131,8 @@ BOSSES = [
 		"party_floor_4_man": 44,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": 42,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/3/38/Mob_Lucid.png",
+		"tutorial": "https://www.youtube.com/watch?v=zqMeLAgtyjU",
 		"priority": 1000,
 	},
 	{
@@ -119,6 +144,8 @@ BOSSES = [
 		"party_floor_4_man": 47,
 		"party_floor_6_man_new": 46,
 		"party_floor_6_man_experienced": 44,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/3/38/Mob_Lucid.png",
+		"tutorial": "https://www.youtube.com/watch?v=zqMeLAgtyjU",
 		"priority": 1200
 	},
 	{
@@ -130,28 +157,34 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": 47,
 		"party_floor_6_man_experienced": 44,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/6/68/Mob_Will_%283%29.png",
+		"tutorial": "https://www.youtube.com/watch?v=78FtiMEYj-Y",
 		"priority": 1300
 	},
 	{
 		"id": 13,
 		"name": "Dusk",
-		"alt_name": ["ndusk", "normal dusk"],
+		"alt_name": ["ndusk", "normal dusk", "gloom", "normal gloom"],
 		"difficulty": "Normal",
 		"solo_floor": 50,
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/c/c2/Mob_Giant_Monster_Gloom.png",
+		"tutorial": "https://www.youtube.com/watch?v=3fV1ql0t-JQ",
 		"priority": 1400
 	},
 	{
 		"id": 14,
 		"name": "Djunkel",
-		"alt_name": ["ndjunkel", "njunkel", "junkel", "normal djunkel"],
+		"alt_name": ["ndjunkel", "njunkel", "junkel", "normal djunkel", "darknell", "normal darknell"],
 		"difficulty": "Normal",
 		"solo_floor": 50,
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/3/3b/Mob_Guard_Captain_Darknell.png",
+		"tutorial": "https://www.youtube.com/watch?v=oVgysLAl5BM",
 		"priority": 1500
 	},
 	{
@@ -163,6 +196,8 @@ BOSSES = [
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": 47,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/0/0c/Mob_Damien_%282%29.png",
+		"tutorial": "https://www.youtube.com/watch?v=Vqid4DzRY7w",
 		"priority": 1700
 	},
 	{
@@ -174,6 +209,8 @@ BOSSES = [
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": 47,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/1/16/Mob_Lotus_%282%29.png",
+		"tutorial": "https://www.youtube.com/watch?v=SgJTAZkQ9Q8",
 		"priority": 1600
 	},
 	{
@@ -185,6 +222,8 @@ BOSSES = [
 		"party_floor_4_man": 54,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/3/38/Mob_Lucid.png",
+		"tutorial": "https://www.youtube.com/watch?v=zqMeLAgtyjU",
 		"priority": 1800
 	},
 	{
@@ -196,39 +235,47 @@ BOSSES = [
 		"party_floor_4_man": 54,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/6/68/Mob_Will_%283%29.png",
+		"tutorial": "https://www.youtube.com/watch?v=78FtiMEYj-Y",
 		"priority": 1900
 	},
 	{
 		"id": 19,
 		"name": "Dusk",
-		"alt_name": ["cdusk", "chaos dusk"],
+		"alt_name": ["cdusk", "chaos dusk", "gloom", "chaos gloom"],
 		"difficulty": "Chaos",
 		"solo_floor": 58,
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 54,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/c/c2/Mob_Giant_Monster_Gloom.png",
+		"tutorial": "https://www.youtube.com/watch?v=3fV1ql0t-JQ",
 		"priority": 2000
 	},
 	{
 		"id": 20,
 		"name": "Djunkel",
-		"alt_name": ["hdjunkel", "hjunkel", "junkel", "hard djunkel"],
+		"alt_name": ["hdjunkel", "hjunkel", "junkel", "hard djunkel", "darknell", "hard darknell"],
 		"difficulty": "Hard",
 		"solo_floor": 58,
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 54,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/3/3b/Mob_Guard_Captain_Darknell.png",
+		"tutorial": "https://www.youtube.com/watch?v=oVgysLAl5BM",
 		"priority": 2100
 	},
 	{
 		"id": 21,
 		"name": "Heretic Hilla",
-		"alt_name": ["vhilla", "hard heretic hilla", "versus hilla"],
+		"alt_name": ["vhilla", "hard heretic hilla", "versus hilla", "hilla", "jin hilla", "hard versus hilla"],
 		"difficulty": "Hard",
 		"solo_floor": 58,
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 54,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/4/42/Mob_Verus_Hilla.png",
+		"tutorial": "https://www.youtube.com/watch?v=h7sRENc6seU",
 		"priority": 2200
 	},
 	{
@@ -240,6 +287,8 @@ BOSSES = [
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/0/0f/Mob_Guardian_Angel_Slime.png",
+		"tutorial": "https://youtu.be/ZwdEqIsx-fQ?t=154",
 		"priority": 2300
 	},
 	{
@@ -251,6 +300,8 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 55,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/4/47/Mob_Black_Mage.png",
+		"tutorial": "https://www.youtube.com/watch?v=JWafuKlHY4Y",
 		"priority": 2400
 	},
 	{
@@ -262,6 +313,8 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"image": "https://static.wikia.nocookie.net/maplestory/images/6/68/Mob_Will_%283%29.png",
+		"tutorial": "https://www.youtube.com/watch?v=78FtiMEYj-Y",
 		"priority": 1100
 	},
 ]

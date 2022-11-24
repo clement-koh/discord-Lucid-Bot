@@ -46,12 +46,17 @@ async def get_boss_information(ctx: lightbulb.SlashContext) -> None:
 		for boss in matching_boss:
 			embed = hikari.Embed(
 				title=f"{boss['difficulty']} {boss['name']}",
-				description= "Recommend Dojo Floors```" +\
-					f"{'Solo':<30}:{boss.get('solo_floor')}\n" + \
-					f"{'Party 4 man':<30}:{boss.get('party_floor_4_man')}\n" + \
+				description= "Recommend Dojo Floors```" + \
+					f"{'Party 6 man (experienced)':<30}:{boss.get('party_floor_6_man_experienced')}\n" + \
 					f"{'Party 6 man (inexperienced)':<30}:{boss.get('party_floor_6_man_new')}\n" + \
-					f"{'Party 6 man (experienced)':<30}:{boss.get('party_floor_6_man_experienced')}\n```"
+					f"{'Party 4 man':<30}:{boss.get('party_floor_4_man')}\n" + \
+					f"{'Solo':<30}:{boss.get('solo_floor')}\n```"
 			)
+
+			if boss.get("tutorial"):
+				embed.add_field("Tutorial Video", boss.get("tutorial"))
+
+			embed.set_thumbnail(boss.get("image"))
 			await ctx.respond(embed)
 	else:
 		await ctx.respond(hikari.Embed(title="No Boss Found"))
