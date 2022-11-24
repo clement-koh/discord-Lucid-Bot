@@ -6,6 +6,7 @@ import logging
 
 from lucid_bot.common_functions import get_character_records, delete_character_record, format_character_information, get_guild_record, update_guild_bossing_interest
 from lucid_bot.extensions.bossing_management import edit_guild_bossing_interest, convert_boss_selection_to_boss_id
+from _embed_colors import *
 
 class Character_Select(miru.Select):
 	def __init__(self, characters) -> None:
@@ -72,7 +73,11 @@ class Delete_Button(miru.Button):
 				# Get Remaining Characters
 				characters = get_character_records(discord_id)
 				message = format_character_information(characters)
-				await ctx.respond(f"<@{discord_id}> Existing Characters\n{message}")
+				embed = hikari.Embed(
+					title="Remaining Characters",
+					description=message,
+					color=COLOR_SUCCESS)
+				await ctx.respond(f"<@{discord_id}>", embed=embed)
 			except Exception as e:
 				logging.error(f"Failed to delete character: {e}")
 				await ctx.edit_response("Bot Error: Failed to delete character", components=[])
