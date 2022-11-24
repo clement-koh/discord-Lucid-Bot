@@ -414,7 +414,7 @@ def edit_guild_bossing_interest(discord_id: str, selected_character_name:str, in
 					pass
 	return interest
 
-def convert_boss_selection_to_boss_id(selections: str, guild_allowed_bosses_ids: list) -> list[int]:
+def convert_boss_selection_to_boss_id(selections: str, guild_allowed_bosses_ids: list) -> list:
 	'''
 	Convert boss position number provided by user into boss ids
 	'''
