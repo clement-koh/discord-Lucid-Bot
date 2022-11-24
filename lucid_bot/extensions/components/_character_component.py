@@ -6,7 +6,7 @@ import logging
 
 from lucid_bot.common_functions import get_character_records, delete_character_record, format_character_information, get_guild_record, update_guild_bossing_interest
 from lucid_bot.extensions.bossing_management import edit_guild_bossing_interest, convert_boss_selection_to_boss_id
-from _embed_colors import *
+from lucid_bot.extensions.components._embed_colors import *
 
 class Character_Select(miru.Select):
 	def __init__(self, characters) -> None:
