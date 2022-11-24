@@ -14,7 +14,7 @@ plugin = lightbulb.Plugin("Bot Config")
 
 # Create Command Group for Bossing Management
 @plugin.command
-@lightbulb.command('config', "Anything related to do with bossing")
+@lightbulb.command('config', "Anything related to do with bot configuration")
 @lightbulb.implements(lightbulb.SlashCommandGroup)
 async def configuration_group(ctx: lightbulb.Context) -> None:
 
