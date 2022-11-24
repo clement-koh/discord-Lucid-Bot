@@ -5,7 +5,7 @@ import miru
 import logging
 
 from lucid_bot.common_functions import get_character_records, delete_character_record, format_character_information, get_guild_record, update_guild_bossing_interest
-from lucid_bot.extensions.bossing_management import edit_guild_bossing_interest, get_valid_selection
+from lucid_bot.extensions.bossing_management import edit_guild_bossing_interest, convert_boss_selection_to_boss_id
 
 class Character_Select(miru.Select):
 	def __init__(self, characters) -> None:
@@ -55,7 +55,7 @@ class Delete_Button(miru.Button):
 				for guild_id in involved_guilds:
 					print(guild_id)
 					guild_record = get_guild_record(guild_id)
-					valid_selections = get_valid_selection("-all", guild_record.get("allowed_bosses"))
+					valid_selections = convert_boss_selection_to_boss_id("-all", guild_record.get("allowed_bosses"))
 					guild_bossing_interest = edit_guild_bossing_interest(discord_id, selected_character, guild_record.get('bossing_interest', {}), valid_selections)
 					update_guild_bossing_interest(guild_id, guild_bossing_interest)
 			except Exception as e:

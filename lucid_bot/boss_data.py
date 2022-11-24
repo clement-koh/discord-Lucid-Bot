@@ -9,6 +9,7 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"priority": 100,
 	},
 	{
 		"id": 2,
@@ -19,6 +20,7 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"priority": 300,
 	},
 	{
 		"id": 3,
@@ -29,6 +31,7 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"priority": 200,
 	},
 	{
 		"id": 4,
@@ -39,6 +42,7 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"priority": 400, 
 	}, 
 	{
 		"id": 5,
@@ -49,6 +53,7 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"priority": 500,
 	},
 	{
 		"id": 6,
@@ -59,6 +64,7 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"priority": 600,
 	},
 	{
 		"id": 7,
@@ -69,6 +75,7 @@ BOSSES = [
 		"party_floor_4_man": 40,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": 36,
+		"priority": 700,
 	},
 	{
 		"id": 8,
@@ -79,6 +86,7 @@ BOSSES = [
 		"party_floor_4_man": 40,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": 37,
+		"priority": 800,
 	},
 	{
 		"id": 9,
@@ -89,6 +97,7 @@ BOSSES = [
 		"party_floor_4_man": 44,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": None,
+		"priority": 900,
 	},
 	{
 		"id": 10,
@@ -99,6 +108,7 @@ BOSSES = [
 		"party_floor_4_man": 44,
 		"party_floor_6_man_new": None,
 		"party_floor_6_man_experienced": 42,
+		"priority": 1000,
 	},
 	{
 		"id": 11,
@@ -109,6 +119,7 @@ BOSSES = [
 		"party_floor_4_man": 47,
 		"party_floor_6_man_new": 46,
 		"party_floor_6_man_experienced": 44,
+		"priority": 1200
 	},
 	{
 		"id": 12,
@@ -119,6 +130,7 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": 47,
 		"party_floor_6_man_experienced": 44,
+		"priority": 1300
 	},
 	{
 		"id": 13,
@@ -129,6 +141,7 @@ BOSSES = [
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"priority": 1400
 	},
 	{
 		"id": 14,
@@ -139,6 +152,7 @@ BOSSES = [
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"priority": 1500
 	},
 	{
 		"id": 15,
@@ -149,6 +163,7 @@ BOSSES = [
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": 47,
+		"priority": 1700
 	},
 	{
 		"id": 16,
@@ -159,6 +174,7 @@ BOSSES = [
 		"party_floor_4_man": 50,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": 47,
+		"priority": 1600
 	},
 	{
 		"id": 17,
@@ -169,6 +185,7 @@ BOSSES = [
 		"party_floor_4_man": 54,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"priority": 1800
 	},
 	{
 		"id": 18,
@@ -179,6 +196,7 @@ BOSSES = [
 		"party_floor_4_man": 54,
 		"party_floor_6_man_new": 50,
 		"party_floor_6_man_experienced": None,
+		"priority": 1900
 	},
 	{
 		"id": 19,
@@ -189,6 +207,7 @@ BOSSES = [
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 54,
+		"priority": 2000
 	},
 	{
 		"id": 20,
@@ -199,16 +218,18 @@ BOSSES = [
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 54,
+		"priority": 2100
 	},
 	{
 		"id": 21,
 		"name": "Heretic Hilla",
-		"alt_name": ["vhilla", "hard heretic hilla"],
+		"alt_name": ["vhilla", "hard heretic hilla", "versus hilla"],
 		"difficulty": "Hard",
 		"solo_floor": 58,
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 54,
+		"priority": 2200
 	},
 	{
 		"id": 22,
@@ -219,6 +240,7 @@ BOSSES = [
 		"party_floor_4_man": 58,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": None,
+		"priority": 2300
 	},
 	{
 		"id": 23,
@@ -229,5 +251,19 @@ BOSSES = [
 		"party_floor_4_man": None,
 		"party_floor_6_man_new": 57,
 		"party_floor_6_man_experienced": 55,
+		"priority": 2400
+	},
+	{
+		"id": 24,
+		"name": "Will",
+		"alt_name": ["ewill", "easy will"],
+		"difficulty": "Easy",
+		"solo_floor": None,
+		"party_floor_4_man": None,
+		"party_floor_6_man_new": None,
+		"party_floor_6_man_experienced": None,
+		"priority": 1100
 	},
 ]
+
+BOSSES = sorted(BOSSES, key=lambda boss: boss['priority'])
