@@ -335,11 +335,11 @@ async def show_registered_bosses(ctx:lightbulb.SlashContext):
 		logging.info("User's characters was not registered for guild bossing")
 		return
 	
-
+	await ctx.respond(f"These are the bosses you have indicated interest for this week")
 	for item in involved_characters:
 		embed = hikari.Embed(
-			title="Registered bosses",
-			description="These are the bosses you have indicated interest for in this week",
+			# title="Registered bosses",
+			# description="These are the bosses you have indicated interest for in this week",
 			color=COLOR_SUCCESS
 		)
 
@@ -358,7 +358,8 @@ async def show_registered_bosses(ctx:lightbulb.SlashContext):
 		character = item['character']
 		embed.add_field(f"{character['character_name']} - Floor {character['floor']}", field_desc_positive + field_desc_negative)
 	
-		await ctx.respond(f"<@{ctx.member.id}>",embed=embed)
+		await ctx.get_channel().send(embed=embed)
+		# await ctx.respond(f"<@{ctx.user.id}>", embed=embed, user_mentions=True)
 
 
 # Helper Function for register_bossing_character_in_guild()

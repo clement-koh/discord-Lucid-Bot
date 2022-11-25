@@ -62,10 +62,7 @@ async def get_boss_information(ctx: lightbulb.SlashContext) -> None:
 			description="Use **/boss register** command to view instructions on how to indicate your bossing interest",
 			color=COLOR_SUCCESS
 		)
-		await ctx.respond("@everyone", embed=embed)
-
-
-
+		await ctx.respond("@everyone", embed=embed, mentions_everyone=True)
 
 # Function to load plugins
 def load(bot):

@@ -77,7 +77,7 @@ class Delete_Button(miru.Button):
 					title="Remaining Characters",
 					description=message,
 					color=COLOR_SUCCESS)
-				await ctx.respond(f"<@{discord_id}>", embed=embed)
+				await ctx.respond(f"<@{discord_id}>", embed=embed, user_mentions=True)
 			except Exception as e:
 				logging.error(f"Failed to delete character: {e}")
 				await ctx.edit_response("Bot Error: Failed to delete character", components=[])
