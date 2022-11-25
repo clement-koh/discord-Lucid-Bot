@@ -13,7 +13,7 @@ from .common_functions import register_guild_in_db
 bot = lightbulb.BotApp(
 	token=os.environ["TOKEN"], 
 	intents=hikari.Intents.ALL,
-	default_enabled_guilds=int(os.environ.get("DEFAULT_GUILD_ID")),
+	# default_enabled_guilds=int(os.environ.get("DEFAULT_GUILD_ID")),
 	help_slash_command=True,
 )
 miru.load(bot)
