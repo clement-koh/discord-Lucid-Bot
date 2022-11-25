@@ -214,11 +214,7 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 			return
 	
 	# If there are people
-	embed = hikari.Embed(
-		title="Guild Boss Interest",
-		color=COLOR_SUCCESS
-	)
-
+	reply = "```fix\nGuild Boss Interest\n```"
 	
 	bossing_data = []		# Dict containing "boss" and "user"
 	character_info = {}		# All character records for users found in full_users
@@ -264,15 +260,17 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 			# Add character to message
 			count = 1
 			for chara in sorted_bossing_group:
-				message += f"{count: >2}:{chara['character_name']:<15}{chara['job']: <15} F{chara['floor']:<7} @{guild_members_converted[chara['discord_id']]}\n"
+				# message += f"{count: >2}:{chara['character_name']:<15}{chara['job']: <15} F{chara['floor']:<7} @{guild_members_converted[chara['discord_id']]}\n"
+				message += f"{count: >2}:{chara['character_name']:<15}{chara['job']: <15} F{chara['floor']:<7} @{ctx.get_guild().get_member(chara['discord_id']).nickname}\n"
 				count += 1
 
-		message = f"```\n{message}```"
+		message = f"```ini\n[{data['boss']['difficulty']} {data['boss']['name']}]\n\n{message}```"
 		# Add Embed Field
-		embed.add_field(f"{data['boss']['difficulty']} {data['boss']['name']}", message)
+		reply += message
+		# embed.add_field(f"{data['boss']['difficulty']} {data['boss']['name']}", message)
 	
 	# Display Embed
-	await ctx.respond(embed)
+	await ctx.respond(reply)
 	
 
 
@@ -295,6 +293,15 @@ async def show_registered_bosses(ctx:lightbulb.SlashContext):
 	characters = get_character_records(discord_id)
 	guild_record = get_guild_record(guild_id)
 	guild_bossing_interest = guild_record.get("bossing_interest")
+
+	allowed_bosses_id = guild_record.get("allowed_bosses")
+	allowed_bosses = []
+	if allowed_bosses_id is None:
+		allowed_bosses = BOSSES
+	else:
+		for boss in BOSSES:
+			if int(boss['id']) in allowed_bosses_id:
+				allowed_bosses.append(boss)
 
 	# Get Guild Bossing Interest
 	if guild_bossing_interest is None:	
@@ -330,24 +337,30 @@ async def show_registered_bosses(ctx:lightbulb.SlashContext):
 		logging.info("User's characters was not registered for guild bossing")
 		return
 	
-	embed = hikari.Embed(
-		title="Registered bosses",
-		description="These are the bosses you have indicated interest for in this week",
-		color=COLOR_SUCCESS
-	)
 
 	for item in involved_characters:
-		field_desc = ""
-		for boss in BOSSES:
-			if boss.get("id") in item.get("bosses"):
-				field_desc += f"- {boss['difficulty']} {boss['name']}\n"
+		embed = hikari.Embed(
+			title="Registered bosses",
+			description="These are the bosses you have indicated interest for in this week",
+			color=COLOR_SUCCESS
+		)
 
-		field_desc = f"```\n{field_desc}```"
+		field_desc_positive = ""
+		field_desc_negative = ""
+		for boss in allowed_bosses:
+			if boss.get("id") in item.get("bosses"):
+				field_desc_positive += f"+ {boss['difficulty']} {boss['name']}\n"
+			else:
+				field_desc_negative += f"- {boss['difficulty']} {boss['name']}\n"
+
+		field_desc_positive = f"```diff\n{field_desc_positive}```"
+		if field_desc_negative:
+			field_desc_negative = f"```diff\n{field_desc_negative}```" 
 
 		character = item['character']
-		embed.add_field(f"{character['character_name']} - Floor {character['floor']}", field_desc)
+		embed.add_field(f"{character['character_name']} - Floor {character['floor']}", field_desc_positive + field_desc_negative)
 	
-	await ctx.respond(embed)
+		await ctx.respond(f"<@{ctx.member.id}>",embed=embed)
 
 
 # Helper Function for register_bossing_character_in_guild()
