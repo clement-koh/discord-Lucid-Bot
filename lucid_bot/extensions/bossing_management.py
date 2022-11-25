@@ -214,8 +214,6 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 			return
 	
 	# If there are people
-	reply = "```fix\nGuild Boss Interest\n```"
-	
 	bossing_data = []		# Dict containing "boss" and "user"
 	character_info = {}		# All character records for users found in full_users
 	full_users = set()		# Set of all disc ID 
@@ -240,6 +238,10 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 	for chara in all_bossing_chara:
 		character_info[chara.get("character_name")] = chara
 
+
+	channel = ctx.get_channel()
+	await ctx.respond("```fix\nGuild Boss Interest\n```")
+	
 	# Format data
 	bossing_data = sorted(bossing_data, key=lambda d: d['boss']['priority'])
 	for data in bossing_data:
@@ -266,15 +268,7 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 
 		message = f"```ini\n[{data['boss']['difficulty']} {data['boss']['name']}]\n\n{message}```"
 		# Add Embed Field
-		reply += message
-		# embed.add_field(f"{data['boss']['difficulty']} {data['boss']['name']}", message)
-	
-	# Display Embed
-	await ctx.respond(reply)
-	
-
-
-
+		await channel.send(message)
 
 
 # Helper function to show currently registeres bosses
