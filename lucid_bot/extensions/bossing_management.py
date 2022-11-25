@@ -262,8 +262,12 @@ async def show_registered_boss_guild(ctx:lightbulb.SlashContext) -> None:
 			# Add character to message
 			count = 1
 			for chara in sorted_bossing_group:
+
+				nickname = ctx.get_guild().get_member(chara['discord_id']).nickname
+				if nickname is None:
+					nickname = ctx.get_guild().get_member(chara['discord_id']).username
 				# message += f"{count: >2}:{chara['character_name']:<15}{chara['job']: <15} F{chara['floor']:<7} @{guild_members_converted[chara['discord_id']]}\n"
-				message += f"{count: >2}:{chara['character_name']:<15}{chara['job']: <15} F{chara['floor']:<7} @{ctx.get_guild().get_member(chara['discord_id']).nickname}\n"
+				message += f"{count: >2}:{chara['character_name']:<15}{chara['job']: <15} F{chara['floor']:<7} @{nickname}\n"
 				count += 1
 
 		message = f"```ini\n[{data['boss']['difficulty']} {data['boss']['name']}]\n\n{message}```"
