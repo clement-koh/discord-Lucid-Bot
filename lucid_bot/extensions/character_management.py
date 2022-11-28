@@ -12,7 +12,7 @@ plugin = lightbulb.Plugin("Character Management")
 
 # Create Command Group for Character Management
 @plugin.command
-@lightbulb.command('characters', "Group of Bossing Characters")
+@lightbulb.command('character', "Group of Bossing Characters")
 @lightbulb.implements(lightbulb.SlashCommandGroup)
 async def character_group(ctx: lightbulb.Context) -> None:
 	await ctx.respond("Invoked Character Group")
